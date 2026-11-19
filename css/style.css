@@ -1,0 +1,129 @@
+:root {
+  --skog: #2F4A33;
+  --mose: #4E6F4A;
+  --lav: #9DB58A;
+  --sand: #F4EFE6;
+  --sand-mork: #E8E0D2;
+  --stein: #6E7268;
+  --leire: #A86B3C;
+  --blekk: #1F2A21;
+  --hvit: #FFFDF9;
+  --radius: 14px;
+  --serif: "Iowan Old Style", "Palatino Linotype", Palatino, Georgia, serif;
+  --sans: system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+}
+
+* { box-sizing: border-box; }
+html { scroll-behavior: smooth; }
+body { margin: 0; font-family: var(--sans); color: var(--blekk); background: var(--sand); line-height: 1.6; }
+img { max-width: 100%; display: block; }
+h1, h2, h3 { font-family: var(--serif); font-weight: 600; line-height: 1.2; margin: 0 0 .5em; }
+h1 { font-size: clamp(2rem, 4.5vw, 3.2rem); }
+h2 { font-size: clamp(1.6rem, 3vw, 2.2rem); color: var(--skog); }
+h3 { font-size: 1.25rem; }
+a { color: var(--skog); }
+.wrap { width: min(1140px, 100% - 2.5rem); margin-inline: auto; }
+
+/* Knapper */
+.knapp { display: inline-block; background: var(--skog); color: var(--hvit); border: 0; border-radius: 999px; padding: .8em 1.5em; font: 600 1rem var(--sans); text-decoration: none; cursor: pointer; transition: background .2s, transform .2s; }
+.knapp:hover { background: var(--mose); transform: translateY(-1px); }
+.knapp-lys { background: transparent; color: var(--hvit); box-shadow: inset 0 0 0 2px rgba(255,253,249,.7); }
+.knapp-lys:hover { background: rgba(255,255,255,.12); }
+.knapp-liten { padding: .5em 1.1em; font-size: .9rem; }
+
+/* Topp */
+.topp { position: sticky; top: 0; z-index: 10; background: rgba(244,239,230,.92); backdrop-filter: blur(8px); border-bottom: 1px solid var(--sand-mork); }
+.topp-inner { display: flex; align-items: center; justify-content: space-between; gap: 1rem; padding-block: .7rem; }
+.merke { display: flex; align-items: center; gap: .6rem; text-decoration: none; font-family: var(--serif); font-size: 1.2rem; font-weight: 600; color: var(--skog); }
+.meny { display: flex; align-items: center; gap: 1.4rem; }
+.meny a:not(.knapp) { text-decoration: none; color: var(--blekk); font-weight: 500; }
+.meny a:not(.knapp):hover { color: var(--mose); }
+@media (max-width: 640px) { .meny a:not(.knapp) { display: none; } .merke span { font-size: 1rem; white-space: nowrap; } .meny .knapp { white-space: nowrap; } .kun-stor { display: none; } .meny .knapp::first-letter { text-transform: uppercase; } }
+@media (max-width: 380px) { .merke img { width: 32px; height: 32px; } .merke span { font-size: .92rem; } }
+
+/* Helt */
+.helt { position: relative; background: radial-gradient(ellipse at 80% 0%, #5E8159 0%, transparent 55%), linear-gradient(160deg, var(--skog), #22382A); color: var(--hvit); padding: clamp(4rem, 10vw, 7rem) 0 6rem; overflow: hidden; }
+.helt::after { content: ""; position: absolute; right: -80px; top: 40px; width: 360px; height: 360px; border-radius: 50%; background: radial-gradient(circle, rgba(157,181,138,.25), transparent 70%); }
+.helt-inner { position: relative; z-index: 1; max-width: 760px; }
+.overtittel { text-transform: uppercase; letter-spacing: .14em; font-size: .8rem; color: var(--lav); margin: 0 0 1rem; }
+.ingress { font-size: 1.12rem; opacity: .92; max-width: 60ch; }
+.helt-knapper { display: flex; flex-wrap: wrap; gap: .8rem; margin-top: 1.8rem; }
+.helt .knapp:not(.knapp-lys) { background: var(--sand); color: var(--skog); }
+.helt .knapp:not(.knapp-lys):hover { background: var(--hvit); }
+.bolge { position: absolute; bottom: -1px; left: 0; width: 100%; height: 60px; fill: var(--sand); }
+
+/* Seksjoner */
+.seksjon { padding: clamp(3rem, 7vw, 5rem) 0; }
+.seksjon-lys { background: var(--hvit); }
+.seksjon-hode { max-width: 640px; margin-bottom: 2rem; }
+.seksjon-hode p { color: var(--stein); margin: 0; }
+
+/* Filter */
+.filter { display: flex; flex-wrap: wrap; gap: .5rem; margin-bottom: 1.8rem; }
+.filter button { border: 1px solid var(--sand-mork); background: var(--hvit); color: var(--blekk); padding: .45em 1.1em; border-radius: 999px; font: 500 .95rem var(--sans); cursor: pointer; }
+.filter button[aria-selected="true"] { background: var(--skog); color: var(--hvit); border-color: var(--skog); }
+
+/* Kort */
+.rutenett { display: grid; grid-template-columns: repeat(auto-fill, minmax(260px, 1fr)); gap: 1.4rem; }
+.kort { background: var(--hvit); border-radius: var(--radius); overflow: hidden; box-shadow: 0 1px 2px rgba(31,42,33,.06), 0 8px 24px -12px rgba(31,42,33,.18); cursor: pointer; display: flex; flex-direction: column; transition: transform .2s, box-shadow .2s; text-align: left; border: 0; padding: 0; font: inherit; color: inherit; }
+.kort:hover, .kort:focus-visible { transform: translateY(-3px); box-shadow: 0 2px 4px rgba(31,42,33,.08), 0 16px 32px -14px rgba(31,42,33,.28); }
+.kort:focus-visible { outline: 3px solid var(--lav); }
+.kort-bilde { position: relative; aspect-ratio: 4/3; background: var(--sand-mork); overflow: hidden; }
+.kort-bilde img, .kort-bilde svg { width: 100%; height: 100%; object-fit: cover; }
+.status { position: absolute; top: .75rem; left: .75rem; background: var(--hvit); color: var(--skog); font-size: .78rem; font-weight: 600; padding: .25em .75em; border-radius: 999px; }
+.status-fa { color: var(--leire); }
+.status-utsolgt { background: var(--blekk); color: var(--hvit); }
+.status-kommer { background: var(--lav); color: var(--blekk); }
+.kort-tekst { padding: 1.1rem 1.2rem 1.3rem; display: flex; flex-direction: column; gap: .15rem; flex: 1; }
+.kort-kategori { font-size: .75rem; text-transform: uppercase; letter-spacing: .12em; color: var(--mose); margin: 0; font-weight: 600; }
+.kort h3 { margin: .1rem 0 0; }
+.latinsk { font-style: italic; color: var(--stein); margin: 0; font-size: .92rem; }
+.pris { font-weight: 700; color: var(--skog); margin-top: auto; padding-top: .7rem; }
+.kort.utsolgt .kort-bilde { filter: grayscale(.6); opacity: .8; }
+.tomt { color: var(--stein); }
+
+/* Om */
+.to-kol { display: grid; grid-template-columns: 1.3fr 1fr; gap: 3rem; align-items: start; }
+@media (max-width: 800px) { .to-kol { grid-template-columns: 1fr; gap: 2rem; } }
+.levering { color: var(--stein); }
+.mattilsynet { display: flex; gap: 1rem; background: var(--sand); border-radius: var(--radius); padding: 1.5rem; border-left: 4px solid var(--mose); }
+.mattilsynet-ikon { flex: none; width: 44px; height: 44px; border-radius: 50%; background: var(--skog); color: var(--hvit); display: grid; place-items: center; }
+.mattilsynet-ikon svg { width: 24px; height: 24px; }
+.mattilsynet p { margin: 0; }
+
+/* Skjema */
+.skjema-wrap { max-width: 760px; }
+.skjema { background: var(--hvit); padding: clamp(1.4rem, 4vw, 2.2rem); border-radius: var(--radius); box-shadow: 0 8px 30px -16px rgba(31,42,33,.25); display: grid; gap: 1rem; }
+.felt-rad { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; }
+@media (max-width: 600px) { .felt-rad { grid-template-columns: 1fr; } }
+.skjema label { display: grid; gap: .35rem; font-weight: 600; font-size: .92rem; }
+.valgfri { font-weight: 400; color: var(--stein); }
+.skjema input, .skjema select, .skjema textarea { font: 400 1rem var(--sans); padding: .7em .85em; border: 1px solid var(--sand-mork); border-radius: 10px; background: var(--sand); color: var(--blekk); width: 100%; }
+.skjema input:focus, .skjema select:focus, .skjema textarea:focus { outline: 2px solid var(--lav); border-color: var(--mose); background: var(--hvit); }
+.skjema .knapp { justify-self: start; }
+.skjema-status { margin: 0; font-weight: 600; min-height: 1.5em; }
+.skjema-status.ok { color: var(--mose); }
+.skjema-status.feil { color: #A33A2A; }
+.skjult { position: absolute; left: -9999px; }
+
+/* Bunn */
+.bunn { background: var(--skog); color: var(--sand); padding: 2.5rem 0; }
+.bunn-inner { display: flex; flex-wrap: wrap; justify-content: space-between; gap: 1.5rem; align-items: center; }
+.merke-bunn { color: var(--sand); }
+.kontakt { list-style: none; margin: 0; padding: 0; display: flex; flex-wrap: wrap; gap: .4rem 1.6rem; font-size: .95rem; }
+.kontakt a { color: var(--sand); }
+
+/* Detalj */
+.detalj { border: 0; border-radius: var(--radius); padding: 0; width: min(860px, 100% - 2rem); max-height: 90vh; background: var(--hvit); color: var(--blekk); box-shadow: 0 30px 80px -20px rgba(0,0,0,.45); }
+.detalj[open] { display: grid; grid-template-columns: 1fr 1fr; }
+.detalj::backdrop { background: rgba(31,42,33,.55); backdrop-filter: blur(3px); }
+@media (max-width: 720px) { .detalj[open] { grid-template-columns: 1fr; overflow-y: auto; } }
+.detalj-bilde { background: linear-gradient(#DCE6D3, #A9BFA0); min-height: 280px; display: flex; align-items: center; }
+.detalj-bilde img, .detalj-bilde svg { width: 100%; height: 100%; object-fit: cover; }
+.detalj-tekst { padding: 2rem 1.8rem; overflow-y: auto; }
+.lukk { position: absolute; top: .6rem; right: .8rem; background: var(--hvit); border: 0; width: 36px; height: 36px; border-radius: 50%; font-size: 1.5rem; line-height: 1; cursor: pointer; color: var(--blekk); z-index: 2; box-shadow: 0 2px 8px rgba(0,0,0,.15); }
+.fakta { display: grid; grid-template-columns: auto 1fr; gap: .35rem 1rem; margin: 1.2rem 0; font-size: .95rem; }
+.fakta dt { color: var(--stein); }
+.fakta dd { margin: 0; font-weight: 500; }
+.detalj-bunn { display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 1rem; border-top: 1px solid var(--sand-mork); padding-top: 1.2rem; }
+.detalj-bunn .pris { padding: 0; font-size: 1.2rem; }
