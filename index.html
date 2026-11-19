@@ -7,6 +7,7 @@
 <meta name="description" content="Sjeldne og håndplukkede akvariefisker for ferskvann og saltvann. Send en forespørsel – vi svarer personlig.">
 <link rel="icon" href="bilder/logo.svg" type="image/svg+xml">
 <link rel="stylesheet" href="css/style.css">
+<link rel="stylesheet" href="css/akvarie.css">
 </head>
 <body>
 
@@ -25,7 +26,13 @@
 </header>
 
 <main>
-  <section class="helt">
+  <section class="helt helt-akvarie">
+    <div class="lys" aria-hidden="true"></div>
+    <div class="bobler" aria-hidden="true"><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i></div>
+    <svg class="svommer svommer-1" viewBox="0 0 120 60" aria-hidden="true"><path d="M8 30C24 6 66 2 86 24l22-16-6 22 6 22-22-16C66 58 24 54 8 30z" fill="#E9A15A"/><path d="M48 12c8 12 8 24 0 36" stroke="#F4EFE6" stroke-width="5" fill="none" opacity=".8"/><circle cx="24" cy="27" r="3" fill="#0B2628"/></svg>
+    <svg class="svommer svommer-2" viewBox="0 0 120 60" aria-hidden="true"><path d="M8 30C24 6 66 2 86 24l22-16-6 22 6 22-22-16C66 58 24 54 8 30z" fill="#7FC4B8"/><path d="M50 14c7 10 7 22 0 32M66 18c5 8 5 16 0 24" stroke="#0F3A3D" stroke-width="4" fill="none" opacity=".5"/><circle cx="24" cy="27" r="3" fill="#0B2628"/></svg>
+    <svg class="svommer svommer-3" viewBox="0 0 120 60" aria-hidden="true"><path d="M8 30C24 6 66 2 86 24l22-16-6 22 6 22-22-16C66 58 24 54 8 30z" fill="#C2452D"/><circle cx="24" cy="27" r="3" fill="#0B2628"/></svg>
+
     <div class="wrap helt-inner">
       <p class="overtittel">Akvariefisk · Ferskvann og saltvann</p>
       <h1 data-felt="slagord">Sjeldne og håndplukkede akvariefisker – med omtanke for dyret</h1>
@@ -34,8 +41,60 @@
         <a href="#fisker" class="knapp">Se fiskene</a>
         <a href="#foresporsel" class="knapp knapp-lys">Send forespørsel</a>
       </div>
+      <ul class="tillit">
+        <li><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2 4 5v6c0 5 3.4 9.4 8 11 4.6-1.6 8-6 8-11V5z"/><path d="m8.5 12 2.5 2.5 4.5-5"/></svg>Karantenebehandlet</li>
+        <li><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 3s6 6.5 6 11a6 6 0 0 1-12 0c0-4.5 6-11 6-11z"/></svg>Råd om vannverdier</li>
+        <li><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M3 12c3-4 6-4 9 0s6 4 9 0"/><path d="M3 17c3-4 6-4 9 0s6 4 9 0"/><path d="M3 7c3-4 6-4 9 0s6 4 9 0"/></svg>Ferskvann og saltvann</li>
+      </ul>
     </div>
-    <svg class="bolge" viewBox="0 0 1440 80" preserveAspectRatio="none" aria-hidden="true"><path d="M0 40c240-40 480-40 720 0s480 40 720 0v40H0z"/></svg>
+
+    <svg class="bunn-planter" viewBox="0 0 1440 220" preserveAspectRatio="none" aria-hidden="true">
+      <g class="plante-svai" fill="#0E3B33">
+        <path d="M60 220C50 160 80 120 70 60c-4 40-30 80-28 160z"/>
+        <path d="M110 220c10-70-30-110-10-180-30 60-10 120-20 180z"/>
+        <path d="M1290 220c-6-60 26-100 16-170-14 50-40 100-36 170z"/>
+        <path d="M1350 220c4-50-24-90-6-150-26 46-16 100-24 150z"/>
+        <path d="M1390 220c-2-40 18-70 8-120-14 36-22 80-18 120z"/>
+      </g>
+      <g fill="#174D42">
+        <path d="M150 220c2-50 30-80 20-130-16 40-36 80-30 130z"/>
+        <path d="M1230 220c-4-44-30-70-20-120 18 34 34 74 30 120z"/>
+        <path d="M200 220c-10-30 4-50-2-80-12 26-12 54-6 80z"/>
+      </g>
+      <path d="M0 196c120-18 240-22 380-10s300 20 460 4 380-22 600 4v26H0z" fill="#F4EFE6"/>
+      <g fill="#E3D8C3"><circle cx="300" cy="200" r="6"/><circle cx="318" cy="204" r="4"/><circle cx="980" cy="198" r="7"/><circle cx="1000" cy="203" r="4"/><circle cx="1180" cy="205" r="5"/></g>
+    </svg>
+  </section>
+
+  <section class="omsorg" aria-labelledby="omsorg-tittel">
+    <div class="wrap">
+      <div class="seksjon-hode">
+        <h2 id="omsorg-tittel">Fra vårt akvarium til ditt</h2>
+        <p>Vi tar inn få fisker om gangen, så hver enkelt får tid og oppfølging før den flytter.</p>
+      </div>
+      <ol class="omsorg-steg">
+        <li>
+          <span class="ikon"><svg viewBox="0 0 24 24"><path d="M12 2 4 5v6c0 5 3.4 9.4 8 11 4.6-1.6 8-6 8-11V5z"/><path d="m8.5 12 2.5 2.5 4.5-5"/></svg></span>
+          <h3>Karantene</h3>
+          <p>Nye fisker går i egne karantenekar og følges opp før de tilbys for salg.</p>
+        </li>
+        <li>
+          <span class="ikon"><svg viewBox="0 0 24 24"><path d="M9 3h6M10 3v6l-5 9a2 2 0 0 0 1.8 3h10.4a2 2 0 0 0 1.8-3l-5-9V3"/><path d="M7.5 15h9"/></svg></span>
+          <h3>Helsesjekk</h3>
+          <p>Vi sjekker at fisken spiser godt og er i god form før den selges.</p>
+        </li>
+        <li>
+          <span class="ikon"><svg viewBox="0 0 24 24"><path d="M12 3s6 6.5 6 11a6 6 0 0 1-12 0c0-4.5 6-11 6-11z"/><path d="M9.5 14.5a2.5 2.5 0 0 0 2.5 2.5"/></svg></span>
+          <h3>Råd om vann</h3>
+          <p>Du får vite temperatur, pH og hva arten trenger, så overgangen blir trygg.</p>
+        </li>
+        <li>
+          <span class="ikon"><svg viewBox="0 0 24 24"><path d="M7 4h10l-1 5a5 5 0 0 1-8 0z"/><path d="M8 9c-2 2-3 5-3 8a3 3 0 0 0 3 3h8a3 3 0 0 0 3-3c0-3-1-6-3-8"/><circle cx="10" cy="15" r="1"/><circle cx="14" cy="13" r=".8"/></svg></span>
+          <h3>Henting eller frakt</h3>
+          <p>Hent hos oss, eller avtal frakt i egnet emballasje for de fleste arter.</p>
+        </li>
+      </ol>
+    </div>
   </section>
 
   <section id="fisker" class="seksjon">
