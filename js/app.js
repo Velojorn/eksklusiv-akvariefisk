@@ -37,6 +37,28 @@
       : tegning(i);
   }
 
+  function erSalt(f) {
+    var k = (f.kategori || "").toLowerCase();
+    if (k.indexOf("salt") > -1) return true;
+    if (k.indexOf("fersk") > -1) return false;
+    return /^8/.test(String(f.ph || "").trim());
+  }
+
+  function vanntype(f) {
+    var s = erSalt(f);
+    return '<span class="vanntype' + (s ? " salt" : "") + '"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 3s6 6.5 6 11a6 6 0 0 1-12 0c0-4.5 6-11 6-11z"/></svg>' + (s ? "Saltvann" : "Ferskvann") + "</span>";
+  }
+
+  function vannfakta(f) {
+    var x = [];
+    if (f.temperatur) x.push(['<path d="M10 4a2 2 0 0 1 4 0v10a4 4 0 1 1-4 0z"/>', f.temperatur]);
+    if (f.ph) x.push(['<path d="M12 3s6 6.5 6 11a6 6 0 0 1-12 0c0-4.5 6-11 6-11z"/>', "pH " + f.ph]);
+    if (f.storrelse) x.push(['<path d="M3 12h18M7 8l-4 4 4 4M17 8l4 4-4 4"/>', f.storrelse]);
+    return x.length ? '<ul class="vannfakta">' + x.map(function (v) {
+      return '<li><svg viewBox="0 0 24 24" aria-hidden="true">' + v[0] + "</svg>" + esc(v[1]) + "</li>";
+    }).join("") + "</ul>" : "";
+  }
+
   function statusKlasse(s) {
     s = (s || "").toLowerCase();
     if (s.indexOf("utsolgt") > -1) return "status-utsolgt";
@@ -70,11 +92,12 @@
       var i = fisker.indexOf(f), sk = statusKlasse(f.status);
       return '<button class="kort' + (sk === "status-utsolgt" ? " utsolgt" : "") + '" data-i="' + i + '">' +
         '<div class="kort-bilde">' + bilde(f, i) +
-        (f.status ? '<span class="status ' + sk + '">' + esc(f.status) + "</span>" : "") + "</div>" +
+        (f.status ? '<span class="status ' + sk + '">' + esc(f.status) + "</span>" : "") + vanntype(f) + "</div>" +
         '<div class="kort-tekst">' +
-        (f.kategori ? '<p class="kort-kategori">' + esc(f.kategori) + "</p>" : "") +
+        (f.kategori && !/^(fersk|salt)vann$/i.test(f.kategori) ? '<p class="kort-kategori">' + esc(f.kategori) + "</p>" : "") +
         "<h3>" + esc(f.navn) + "</h3>" +
         (f.latinsk ? '<p class="latinsk">' + esc(f.latinsk) + "</p>" : "") +
+        vannfakta(f) +
         '<span class="pris">' + esc(f.pris || "Pris på forespørsel") + "</span>" +
         "</div></button>";
     }).join("");
