@@ -1,0 +1,8 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" role="img" aria-label="Eksklusiv Akvariefisk">
+  <circle cx="32" cy="32" r="30" fill="#2F4A33"/>
+  <path d="M10 40c7-4 14-4 22 0s15 4 22 0v12a30 30 0 0 1-44 0z" fill="#4E6F4A"/>
+  <path d="M16 31c6-9 18-11 26-4l7-6-2 10 2 10-7-6c-8 7-20 5-26-4z" fill="#F4EFE6"/>
+  <circle cx="22.5" cy="30" r="1.8" fill="#2F4A33"/>
+  <path d="M29 24c2 4 2 10 0 14" stroke="#2F4A33" stroke-width="1.4" fill="none" stroke-linecap="round" opacity=".55"/>
+  <path d="M41 9c-6 1-9 6-7 11 5-1 8-5 7-11z" fill="#9DB58A"/>
+</svg>
