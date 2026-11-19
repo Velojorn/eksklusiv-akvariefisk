@@ -1,0 +1,122 @@
+/* Akvarietema – legges oppå style.css */
+:root {
+  --vann-dyp: #0B2628;
+  --vann: #134A47;
+  --vann-lys: #1F6A61;
+  --turkis: #7FC4B8;
+  --saltvann: #2C6E8F;
+}
+
+/* ---------- Undervanns-toppfelt ---------- */
+.helt-akvarie {
+  background:
+    radial-gradient(ellipse 70% 50% at 30% -10%, rgba(180, 230, 215, .35), transparent 60%),
+    linear-gradient(180deg, var(--vann-lys) 0%, var(--vann) 45%, var(--vann-dyp) 100%);
+  padding: clamp(4.5rem, 10vw, 7.5rem) 0 clamp(9rem, 16vw, 13rem);
+  isolation: isolate;
+}
+.helt-akvarie::after { display: none; }
+
+/* Lysstråler fra overflaten */
+.lys {
+  position: absolute; inset: -20% -10% 0; z-index: -1; pointer-events: none;
+  background: repeating-linear-gradient(105deg,
+    transparent 0 60px, rgba(220, 255, 240, .07) 60px 90px, transparent 90px 170px,
+    rgba(220, 255, 240, .045) 170px 230px, transparent 230px 320px);
+  mask-image: linear-gradient(180deg, #000 0%, transparent 75%);
+  -webkit-mask-image: linear-gradient(180deg, #000 0%, transparent 75%);
+  animation: lys-svai 14s ease-in-out infinite alternate;
+}
+@keyframes lys-svai { from { transform: translateX(-30px) skewX(-3deg); } to { transform: translateX(30px) skewX(3deg); } }
+
+/* Bobler */
+.bobler { position: absolute; inset: 0; z-index: -1; pointer-events: none; overflow: hidden; }
+.bobler i {
+  position: absolute; bottom: -20px; width: 10px; height: 10px; border-radius: 50%;
+  border: 1.5px solid rgba(230, 255, 248, .55); background: rgba(230, 255, 248, .08);
+  animation: boble 11s linear infinite;
+}
+.bobler i:nth-child(1)  { left: 6%;  animation-delay: 0s;   width: 8px;  height: 8px; }
+.bobler i:nth-child(2)  { left: 12%; animation-delay: 3s;   width: 14px; height: 14px; animation-duration: 13s; }
+.bobler i:nth-child(3)  { left: 22%; animation-delay: 6s; }
+.bobler i:nth-child(4)  { left: 48%; animation-delay: 1.5s; width: 6px;  height: 6px; animation-duration: 9s; }
+.bobler i:nth-child(5)  { left: 63%; animation-delay: 4s;   width: 12px; height: 12px; }
+.bobler i:nth-child(6)  { left: 74%; animation-delay: 8s;   width: 7px;  height: 7px; animation-duration: 10s; }
+.bobler i:nth-child(7)  { left: 82%; animation-delay: 2s;   width: 16px; height: 16px; animation-duration: 15s; }
+.bobler i:nth-child(8)  { left: 88%; animation-delay: 5.5s; }
+.bobler i:nth-child(9)  { left: 93%; animation-delay: 9s;   width: 6px;  height: 6px; }
+.bobler i:nth-child(10) { left: 36%; animation-delay: 7s;   width: 9px;  height: 9px; animation-duration: 12s; }
+@keyframes boble {
+  0%   { transform: translate(0, 0); opacity: 0; }
+  10%  { opacity: 1; }
+  50%  { transform: translate(12px, -55vh); }
+  100% { transform: translate(-6px, -110vh); opacity: 0; }
+}
+
+/* Svømmende fisker */
+.svommer { position: absolute; z-index: -1; pointer-events: none; opacity: .85; }
+.svommer-1 { width: 70px; top: 22%; animation: svom-venstre 38s linear infinite; }
+.svommer-2 { width: 52px; top: 58%; animation: svom-venstre 30s linear infinite; animation-delay: -12s; opacity: .7; }
+.svommer-3 { width: 40px; top: 38%; animation: svom-hoyre 46s linear infinite; animation-delay: -20s; opacity: .55; }
+@keyframes svom-venstre {
+  0%   { left: 105%; transform: translateY(0); }
+  50%  { transform: translateY(-14px); }
+  100% { left: -10%; transform: translateY(0); }
+}
+@keyframes svom-hoyre {
+  0%   { left: -10%; transform: scaleX(-1) translateY(0); }
+  50%  { transform: scaleX(-1) translateY(10px); }
+  100% { left: 105%; transform: scaleX(-1) translateY(0); }
+}
+
+/* Planter og sandbunn */
+.bunn-planter { position: absolute; left: 0; bottom: -1px; width: 100%; height: clamp(140px, 19vw, 270px); z-index: 0; pointer-events: none; }
+.plante-svai { transform-origin: bottom; animation: plante 7s ease-in-out infinite alternate; }
+@keyframes plante { from { transform: skewX(-1.5deg); } to { transform: skewX(1.5deg); } }
+
+/* Tillitsmerker i toppfeltet */
+.tillit { list-style: none; padding: 0; margin: 2.2rem 0 0; display: flex; flex-wrap: wrap; gap: .6rem 1.4rem; font-size: .95rem; color: #DDEFE8; }
+.tillit li { display: flex; align-items: center; gap: .45rem; }
+.tillit svg { width: 20px; height: 20px; fill: none; stroke: var(--turkis); stroke-width: 1.8; stroke-linecap: round; stroke-linejoin: round; }
+
+.helt-akvarie .overtittel { color: var(--turkis); }
+
+/* ---------- Omsorg ---------- */
+.omsorg { padding: clamp(2.5rem, 6vw, 4rem) 0 clamp(1rem, 3vw, 2rem); }
+.omsorg-steg { list-style: none; padding: 0; margin: 0; display: grid; grid-template-columns: repeat(4, 1fr); gap: 1.2rem; counter-reset: steg; }
+@media (max-width: 900px) { .omsorg-steg { grid-template-columns: repeat(2, 1fr); } }
+@media (max-width: 520px) { .omsorg-steg { grid-template-columns: 1fr; } }
+.omsorg-steg li {
+  position: relative; background: var(--hvit); border-radius: var(--radius); padding: 1.4rem 1.3rem 1.3rem;
+  box-shadow: 0 8px 24px -16px rgba(11, 38, 40, .35); counter-increment: steg;
+}
+.omsorg-steg li::after {
+  content: counter(steg); position: absolute; top: 1rem; right: 1.1rem;
+  font: 600 2rem/1 var(--serif); color: rgba(19, 74, 71, .12);
+}
+.omsorg-steg h3 { margin: .8rem 0 .3rem; font-size: 1.1rem; color: var(--vann); }
+.omsorg-steg p { margin: 0; color: var(--stein); font-size: .95rem; }
+.omsorg .ikon { width: 46px; height: 46px; border-radius: 50%; display: grid; place-items: center; background: linear-gradient(160deg, var(--vann-lys), var(--vann)); }
+.omsorg .ikon svg { width: 24px; height: 24px; fill: none; stroke: #E6F5F0; stroke-width: 1.7; stroke-linecap: round; stroke-linejoin: round; }
+
+/* ---------- Fiskekort med vannfakta ---------- */
+.vanntype {
+  position: absolute; top: .75rem; right: .75rem; display: inline-flex; align-items: center; gap: .3rem;
+  font-size: .75rem; font-weight: 600; padding: .25em .7em .25em .5em; border-radius: 999px;
+  background: rgba(255, 253, 249, .92); color: var(--mose);
+}
+.vanntype svg { width: 13px; height: 13px; fill: currentColor; }
+.vanntype.salt { color: var(--saltvann); }
+.vannfakta { display: flex; flex-wrap: wrap; gap: .35rem; margin-top: .7rem; padding: 0; list-style: none; }
+.vannfakta li { font-size: .78rem; background: var(--sand); color: var(--blekk); border-radius: 999px; padding: .2em .65em; display: inline-flex; align-items: center; gap: .3rem; }
+.vannfakta svg { width: 12px; height: 12px; fill: none; stroke: var(--vann-lys); stroke-width: 2; stroke-linecap: round; }
+.kort .pris { padding-top: .8rem; }
+
+/* Fiskeseksjonen får en svak vannbakgrunn */
+#fisker { background: linear-gradient(180deg, var(--sand) 0%, #EAF0EA 100%); }
+
+/* Rolig variant for de som ønsker mindre bevegelse */
+@media (prefers-reduced-motion: reduce) {
+  .lys, .bobler i, .svommer, .plante-svai { animation: none; }
+  .bobler, .svommer { display: none; }
+}
