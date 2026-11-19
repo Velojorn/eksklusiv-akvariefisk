@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="nb">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Eksklusiv Akvariefisk</title>
+<meta name="description" content="Sjeldne og håndplukkede akvariefisker for ferskvann og saltvann. Send en forespørsel – vi svarer personlig.">
+<link rel="icon" href="bilder/logo.svg" type="image/svg+xml">
+<link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+<header class="topp">
+  <div class="wrap topp-inner">
+    <a class="merke" href="#">
+      <img src="bilder/logo.svg" alt="" width="40" height="40">
+      <span data-felt="butikknavn">Eksklusiv Akvariefisk</span>
+    </a>
+    <nav class="meny">
+      <a href="#fisker">Fisker</a>
+      <a href="#om">Om oss</a>
+      <a href="#foresporsel" class="knapp knapp-liten"><span class="kun-stor">Send </span>forespørsel</a>
+    </nav>
+  </div>
+</header>
+
+<main>
+  <section class="helt">
+    <div class="wrap helt-inner">
+      <p class="overtittel">Akvariefisk · Ferskvann og saltvann</p>
+      <h1 data-felt="slagord">Sjeldne og håndplukkede akvariefisker – med omtanke for dyret</h1>
+      <p class="ingress" data-felt="intro"></p>
+      <div class="helt-knapper">
+        <a href="#fisker" class="knapp">Se fiskene</a>
+        <a href="#foresporsel" class="knapp knapp-lys">Send forespørsel</a>
+      </div>
+    </div>
+    <svg class="bolge" viewBox="0 0 1440 80" preserveAspectRatio="none" aria-hidden="true"><path d="M0 40c240-40 480-40 720 0s480 40 720 0v40H0z"/></svg>
+  </section>
+
+  <section id="fisker" class="seksjon">
+    <div class="wrap">
+      <div class="seksjon-hode">
+        <h2>Fisker for salg nå</h2>
+        <p>Klikk på en fisk for mer informasjon. Alle kjøp avtales via forespørsel.</p>
+      </div>
+      <div class="filter" id="filter" role="tablist" aria-label="Filtrer etter kategori"></div>
+      <div class="rutenett" id="rutenett" aria-live="polite"></div>
+      <p class="tomt" id="tomt" hidden>Ingen fisker i denne kategorien akkurat nå. Send oss gjerne en forespørsel om det du ser etter.</p>
+    </div>
+  </section>
+
+  <section id="om" class="seksjon seksjon-lys">
+    <div class="wrap to-kol">
+      <div>
+        <h2>Om oss</h2>
+        <p data-felt="om_oss"></p>
+        <p class="levering" data-felt="levering"></p>
+      </div>
+      <aside class="mattilsynet">
+        <div class="mattilsynet-ikon" aria-hidden="true">
+          <svg viewBox="0 0 24 24"><path d="M12 2 4 5v6c0 5 3.4 9.4 8 11 4.6-1.6 8-6 8-11V5z" fill="none" stroke="currentColor" stroke-width="1.6"/><path d="m8.5 12 2.5 2.5 4.5-5" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/></svg>
+        </div>
+        <div>
+          <h3>Dyrevelferd og Mattilsynet</h3>
+          <p data-felt="mattilsynet"></p>
+        </div>
+      </aside>
+    </div>
+  </section>
+
+  <section id="foresporsel" class="seksjon">
+    <div class="wrap skjema-wrap">
+      <div class="seksjon-hode">
+        <h2>Send en forespørsel</h2>
+        <p>Fortell oss hvilken fisk du er interessert i, så tar vi kontakt med pris, tilgjengelighet og henting eller frakt.</p>
+      </div>
+
+      <form name="foresporsel" method="POST" action="/takk.html" data-netlify="true" netlify-honeypot="bot-felt" id="skjema" class="skjema">
+        <input type="hidden" name="form-name" value="foresporsel">
+        <p class="skjult"><label>Ikke fyll ut: <input name="bot-felt"></label></p>
+
+        <div class="felt-rad">
+          <label>Navn<input name="navn" required autocomplete="name"></label>
+          <label>E-post<input type="email" name="epost" required autocomplete="email"></label>
+        </div>
+        <div class="felt-rad">
+          <label><span>Telefon <span class="valgfri">(valgfritt)</span></span><input type="tel" name="telefon" autocomplete="tel"></label>
+          <label>Hvilken fisk?
+            <select name="fisk" id="fisk-valg">
+              <option value="Generell henvendelse">Generell henvendelse</option>
+            </select>
+          </label>
+        </div>
+        <div class="felt-rad">
+          <label>Antall<input type="number" name="antall" min="1" value="1"></label>
+          <label>Henting eller frakt?
+            <select name="levering">
+              <option>Henting</option>
+              <option>Frakt</option>
+              <option>Usikker</option>
+            </select>
+          </label>
+        </div>
+        <label>Melding<textarea name="melding" rows="5" placeholder="F.eks. størrelse på akvariet ditt, vannverdier eller spørsmål"></textarea></label>
+        <button type="submit" class="knapp">Send forespørsel</button>
+        <p class="skjema-status" id="skjema-status" role="status"></p>
+      </form>
+    </div>
+  </section>
+</main>
+
+<footer class="bunn">
+  <div class="wrap bunn-inner">
+    <div class="merke merke-bunn">
+      <img src="bilder/logo.svg" alt="" width="32" height="32">
+      <span data-felt="butikknavn">Eksklusiv Akvariefisk</span>
+    </div>
+    <ul class="kontakt" id="kontakt"></ul>
+  </div>
+</footer>
+
+<dialog id="detalj" class="detalj" aria-labelledby="detalj-navn">
+  <button class="lukk" id="lukk" aria-label="Lukk">×</button>
+  <div class="detalj-bilde" id="detalj-bilde"></div>
+  <div class="detalj-tekst">
+    <p class="kort-kategori" id="detalj-kategori"></p>
+    <h3 id="detalj-navn"></h3>
+    <p class="latinsk" id="detalj-latinsk"></p>
+    <p id="detalj-beskrivelse"></p>
+    <dl class="fakta" id="detalj-fakta"></dl>
+    <div class="detalj-bunn">
+      <span class="pris" id="detalj-pris"></span>
+      <button class="knapp" id="detalj-knapp">Send forespørsel om denne</button>
+    </div>
+  </div>
+</dialog>
+
+<script src="js/app.js"></script>
+</body>
+</html>
