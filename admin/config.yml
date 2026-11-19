@@ -1,0 +1,83 @@
+# Adminpanel (Decap CMS). Bytt ut BRUKERNAVN med GitHub-brukernavnet ditt.
+backend:
+  name: github
+  repo: Velojorn/eksklusiv-akvariefisk
+  branch: main
+  commit_messages:
+    update: "Oppdatert {{slug}}"
+
+locale: nb_no
+site_url: /
+display_url: /
+logo_url: /bilder/logo.svg
+
+media_folder: bilder/fisk
+public_folder: /bilder/fisk
+
+collections:
+  - name: butikk
+    label: Butikk
+    editor:
+      preview: false
+    files:
+      - name: fisker
+        label: Fisker for salg
+        file: data/fisker.json
+        fields:
+          - name: fisker
+            label: Fisker
+            label_singular: fisk
+            widget: list
+            summary: "{{fields.navn}} – {{fields.status}} – {{fields.pris}}"
+            collapsed: true
+            fields:
+              - { name: navn, label: Navn, widget: string }
+              - { name: latinsk, label: Latinsk navn, widget: string, required: false }
+              - name: kategori
+                label: Kategori
+                widget: relation
+                collection: butikk
+                file: kategorier
+                search_fields: ["kategorier.*.navn"]
+                value_field: "kategorier.*.navn"
+                display_fields: ["kategorier.*.navn"]
+                required: false
+              - { name: pris, label: "Pris (f.eks. «kr 1 200» eller «Pris på forespørsel»)", widget: string, default: "Pris på forespørsel" }
+              - name: status
+                label: Status
+                widget: select
+                options: ["På lager", "Få igjen", "Kommer snart", "Utsolgt"]
+                default: "På lager"
+              - { name: bilde, label: Bilde, widget: image, required: false, choose_url: false }
+              - { name: storrelse, label: Størrelse, widget: string, required: false }
+              - { name: temperatur, label: Temperatur, widget: string, required: false }
+              - { name: ph, label: pH, widget: string, required: false }
+              - { name: beskrivelse, label: Beskrivelse, widget: text, required: false }
+              - { name: vis, label: Vis på nettsiden, widget: boolean, default: true }
+
+      - name: kategorier
+        label: Kategorier
+        file: data/kategorier.json
+        fields:
+          - name: kategorier
+            label: Kategorier
+            label_singular: kategori
+            widget: list
+            summary: "{{fields.navn}}"
+            fields:
+              - { name: navn, label: Navn, widget: string }
+
+      - name: innstillinger
+        label: Tekster og kontaktinfo
+        file: data/innstillinger.json
+        fields:
+          - { name: butikknavn, label: Butikknavn, widget: string }
+          - { name: slagord, label: Overskrift på forsiden, widget: string }
+          - { name: intro, label: Introtekst, widget: text }
+          - { name: om_oss, label: Om oss, widget: text }
+          - { name: mattilsynet, label: Dyrevelferd og Mattilsynet, widget: text }
+          - { name: levering, label: Henting og frakt, widget: text }
+          - { name: epost, label: E-post (vises på siden), widget: string }
+          - { name: telefon, label: Telefon, widget: string, required: false }
+          - { name: adresse, label: Adresse, widget: string, required: false }
+          - { name: orgnr, label: Org.nr., widget: string, required: false }
